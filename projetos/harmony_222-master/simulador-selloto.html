@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Simulador Financeiro - Calcule já seu sensor!</title>
+</head>
+
+<!--Deixa a pagina alinhada no centro-->
+<body style="text-align:center;">
+    
+<h1> Simule quanto voce irá economizar comprando um sensor nosso!</h1>
+
+<p>
+    Atualmente estimasse que o músico que não pratica a boa manutenção de seus instrumentos tenha de gastar uma certa quantia por ano com 
+    manutenção e em casos mais graves, um instrumento novo.
+    Nossa equipe de desenvolvedores fez um cálculo para verificar quanto se perde por ano em dinheiro com esse problema.
+</p>
+
+<p> Selecione o tipo de <b>instrumento</b> que você possui e iremos mostrar dados sobre ele:</p>
+
+        <!-- Este comando <select onchange> se conecta diretamente com o comando mostrarDiv, ele vai ser a referencia do comando.-->
+        <select onchange="mostrarDiv()" id="Instrumentos">
+
+            <!-- O usuário escolhe seu instrumento. Assim que escolhido, é criado uma ID (Ex: violaoValor que custa 700), 
+                que já possui um valor.-->
+                <option value="0">Selecione o instrumento:</option>
+                <option id="violaoValor" value="700">Violão</option>
+                <option id="violaoImportValor" value="5000">Violão Importado</option>
+                <option id="violinoValor" value="500">Violino</option>
+                <option id="violinoImportValor" value="2000">Violino Importado</option>
+                <option id="contraValor" value="1200">Contrabaixo</option>
+                <option id="contraImportValor" value="5200">Contrabaixo Importado</option>
+                <option id="guitarraValor" value="1000">Guitarra</option>
+                <option id="guitarraImportValor" value="5100">Guitarra Importada</option>
+            </select>
+<br>
+
+
+        <br>
+
+         <!--Este envia a resposta do calculo para o cliente dependendo da escolha dele. Também exibe o valor de economia mensal.-->
+            <div style="display: none" id="divViolao">
+            Um violão nacional custa R$ 700,00, e um conserto padrão custa R$ 150,00. Sua <b>economia anual total</b> será em torno de R$<b id=violaoValorEconomia>?</b>
+            </div>
+<br>
+            <div style="display: none" id="divViolaoImport">
+            Um violão importado custa R$ 5000,00 e um conserto padrão custa R$ 150,00. Sua <b>economia anual total</b> será em torno de R$<b id=violaoImportValorEconomia>?</b>
+            </div>
+<br>
+            <div style="display: none" id="divViolino">
+            O violino tem um preço nacional médio de R$ 500,00, o conserto custa em torno de R$ 175,00. Sua <b>economia anual total</b> será em torno de R$<b id=violinoValorEconomia>?</b>
+            </div>
+<br>
+            <div style="display: none" id="divViolinoImport">
+            Um violino vindo de fora custa R$ 2000,00 e o conserto custa em torno de R$ 210,00. Sua <b>economia anual total</b> será em torno de R$<b id=violinoImportValorEconomia>?</b>
+            </div>
+<br>
+            <div style="display: none" id="divContra">
+            O contrabaixo nacional está custando R$ 1200,00, o conserto sai em torno de 155,00. Sua <b>economia anual total</b> será em torno de R$<b id=contraValorEconomia>?</b>
+            </div>
+<br>
+            <div style="display: none" id="divContraImport">
+            O contrabaixo importado está saindo na casa de $ 5000,00, o conserto sai em torno de  R$ 500,00. Sua <b>economia anual total</b> será em torno de R$<b id=contraImportValorEconomia>?</b>
+            </div>
+<br>
+            <div style="display: none" id="divGuitarra">
+            A guitarra tem um valor nacional de R$ 1000,00, um conserto médio sai por volta de R$ 250,00. Sua <b>economia anual total</b> será em torno de R$<b id=guitarraValorEconomia>?</b>
+            </div>
+<br>
+            <div style="display: none" id="divGuitarraImport">
+            A guitarra importada vem com o valor de R$ 5000,00 e um conserto médio sai por volta de R$ 350,00. Sua <b>economia anual total</b> será em torno de R$<b id=guitarraImportValorEconomia>?</b>
+            </div>
+<br>
+
+        <!--Mensagem para avisar a pessoa a calcular-->
+        <p>Calcule abaixo para ver quanto voce terá de <b>economia</b> em manutenção e em equipamentos novos.</p>
+        <!-- Inicia o programa do JavaScript.-->
+        <button onclick="Calcular()">Clique aqui!</button>
+                 
+</body>
+</html>
+
+<script>
+    // Inicia a função calcular.
+function Calcular() {
+
+// Valor do resultado de economia de cada instrumento
+// 700 = Valor do instrumento (Exemplo)
+// 150 = Valor do conserto (Exemplo)
+violaoValorEconomia.innerHTML = (700 + 150).toFixed(2);
+violaoImportValorEconomia.innerHTML = (5000 + 150).toFixed(2);
+violinoValorEconomia.innerHTML = (500 + 175).toFixed(2);
+violinoImportValorEconomia.innerHTML = (2000 + 210).toFixed(2);
+contraValorEconomia.innerHTML = (1200 + 155).toFixed(2);
+contraImportValorEconomia.innerHTML = (5000 + 500).toFixed(2);
+guitarraValorEconomia.innerHTML = (1000 + 250).toFixed(2);
+guitarraImportValorEconomia.innerHTML = (5000 + 350).toFixed(2);
+
+// COMANDO IMPORTANTE: Inicia a função abaixo, que se chama mostrarDiv.
+mostrarDiv();
+
+}
+// Essa função verifica qual instrumento foi escolhido e mostra pro usuario somente a informação do instrumento escolhido.
+function mostrarDiv(){
+
+    // É importante definir uma caracteristica do instrumento (Neste caso foi o valor de 700) que foi escolhido, 
+    // assim o JavaScript o reconhece.
+     if(Instrumentos.value = 700){
+
+        // Ápos isso, ele mostra a div que está oculta.
+        divViolao.style.display='block';
+        // E oculta novamente todas as outras com estes comandos abaixo.
+        divViolaoImport.style.display='none';
+        divViolino.style.display='none';
+        divViolinoImport.style.display='none';
+        divContra.style.display='none';
+        divContraImport.style.display='none';
+        divGuitarra.style.display='none';
+        divGuitarraImport.style.display='none';
+
+    }
+    //Outro exemplo
+ else if(Instrumentos.value = 5000){
+
+            divViolao.style.display='none';
+        divViolaoImport.style.display='block';
+        divViolino.style.display='none';
+        divViolinoImport.style.display='none';
+        divContra.style.display='none';
+        divContraImport.style.display='none';
+        divGuitarra.style.display='none';
+        divGuitarraImport.style.display='none';
+    }
+    else if(Instrumentos.value = 500){
+
+        divViolao.style.display='none';
+        divViolaoImport.style.display='none';
+        divViolino.style.display='block';
+        divViolinoImport.style.display='none';
+        divContra.style.display='none';
+        divContraImport.style.display='none';
+        divGuitarra.style.display='none';
+        divGuitarraImport.style.display='none';
+    }
+
+    else if(Instrumentos.value = 2000){
+
+        divViolao.style.display='none';
+        divViolaoImport.style.display='none';
+        divViolino.style.display='none';
+        divViolinoImport.style.display='block';
+        divContra.style.display='none';
+        divContraImport.style.display='none';
+        divGuitarra.style.display='none';
+        divGuitarraImport.style.display='none';
+
+    }
+   else if(Instrumentos.value = 1200){
+        divViolao.style.display='none';
+        divViolaoImport.style.display='none';
+        divViolino.style.display='none';
+        divViolinoImport.style.display='none';
+        divContra.style.display='block';
+        divContraImport.style.display='none';
+        divGuitarra.style.display='none';
+        divGuitarraImport.style.display='none';
+
+    }
+    else if(Instrumentos.value= 5200){
+
+        divViolao.style.display='none';
+        divViolaoImport.style.display='none';
+        divViolino.style.display='none';
+        divViolinoImport.style.display='none';
+        divContra.style.display='none';
+        divContraImport.style.display='block';
+        divGuitarra.style.display='none';
+        divGuitarraImport.style.display='none';
+
+    }
+    else if(Instrumentos.value = 1000){
+
+        divViolao.style.display='none';
+        divViolaoImport.style.display='none';
+        divViolino.style.display='none';
+        divViolinoImport.style.display='none';
+        divContra.style.display='none';
+        divContraImport.style.display='none';
+        divGuitarra.style.display='block';
+        divGuitarraImport.style.display='none';
+    
+    }
+    else if(Instrumentos.value = 5100){
+
+        divViolao.style.display='none';
+        divViolaoImport.style.display='none';
+        divViolino.style.display='none';
+        divViolinoImport.style.display='none';
+        divContra.style.display='none';
+        divContraImport.style.display='none';
+        divGuitarra.style.display='none';
+        divGuitarraImport.style.display='block';
+    }
+}
+</script>

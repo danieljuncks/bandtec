@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Simulador financeiro</title>
+<style>
+    .center {
+        margin-top: 10px; /* Margem */
+    }
+    .div{
+        background-color: rgba(0, 0, 0, 0.575); /* o fundo da div */
+        padding: 10px;
+        border: 1px;
+        border-radius: 10px; /* Arredondamento da borda  */
+        margin-left: 80px;
+        margin-right: 80px;
+            
+    }
+    html{
+        background: url(https://s03.s3c.es/imag/_v0/770x420/0/b/7/Instrumentos-musicales.jpg) no-repeat center /* isso é para a imagem não se repetir e ficar alinhada ao centro */ center fixed; /* imagem como fundo */
+        background-size: cover;
+        margin: 0px;
+        padding: 0px;
+        -webkit-background-size:cover;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    }
+    .letra1{ /* estilizando texto  */
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: #000;
+        font-size: 3em; color: #fffdd9;
+    }
+    .letra2{
+        color: white;
+    }
+</style>
+</head>
+
+<body>
+<center class="center">
+
+    <h1 class="letra1">Calcule sua economia </h1>
+    <div class="div">
+    <form id="formulario">
+       <h3 class="letra2"> Informe seu Instrumento: <input type="text" id="instrumento"> </h3>
+        <br>
+       <h3 class="letra2"> Valor do instrumento: <input type="number" id="valor_instrumento"> </h3>
+        <br>
+        <h3 class="letra2"> Qual valor do conserto? <input type="number" id="conserto"> </h3>
+        <br>
+        <h3 class="letra2"> Quantas vezes conserta ou faz a manutenção do instrumento por ano? <input type="number" id="vezes_conserto"> </h3>
+        <br>
+        <button type="button" onclick="calcular()">Calcular</button>
+    </form>
+    </div>
+    
+    <div id="div_mensagem" style="background-color: sandybrown; color: maroon; display: none;"> 
+        Por ano você gasta R$<span id="gasto">X</span> reais com conserto ou manutenção do seu <span id="nome_instrumento">X</span>. <br>
+        Com nosso pruduto você ira economizar: R$ <b id="economia">X</b> reais por ano! <br>
+        Por uma mensalidade de apenas: R$ <b id="mensalidade">X</b> reais.
+    </div>
+</center>
+</body>
+
+</html>
+<script>
+    function calcular(){
+        var valor_mensalidade = Number(valor_instrumento.value) * 0.1;
+
+        var conserto_por_ano = (Number(conserto.value)* Number(vezes_conserto.value));
+
+        var economia_por_ano = conserto_por_ano - valor_mensalidade * 12;
+
+        div_mensagem.style.display='block';
+        gasto.innerHTML = `${conserto_por_ano}`;
+        nome_instrumento.innerHTML= `${instrumento.value}`;
+        economia.innerHTML= `${economia_por_ano}`;
+        mensalidade.innerHTML= `${valor_mensalidade}`;
+    }
+</script>S
